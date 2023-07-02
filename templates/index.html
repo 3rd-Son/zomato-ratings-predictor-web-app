@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Zomato Ratings Predictor</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Arimo"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Hind:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+
+  <body>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .image-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+    </style>
+
+    <div class="image-container">
+      <img
+        src="https://restaurantindia.s3.ap-south-1.amazonaws.com/s3fs-public/news14109.jpg"
+        alt="zomato image"
+        width="200"
+        height="100"
+      />
+    </div>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-image: url("https://images.pexels.com/photos/3648850/pexels-photo-3648850.jpeg?auto=compress&cs=tinysrgb&w=1600");
+        background-position: 200%;
+        background-size: cover;
+        height: 100vh;
+        background-repeat: no-repeat;
+      }
+      h1 {
+        color: white;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      form table input {
+        margin-bottom: 10px;
+        height: 20px;
+        font-size: 18px;
+        padding: 10px;
+        width: 500px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+        cursor: pointer;
+      }
+      form table button {
+        margin-bottom: 10px;
+        height: 40px;
+        font-size: 18px;
+        padding: 5px;
+        width: 520px; /* Adjust the width as needed */
+        background-color: red;
+        color: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+
+    <div class="login">
+      <h1>Predict Zomato Restaurant Ratings</h1>
+
+      <!-- Main Input For Receiving Query to our ML -->
+      <form action="{{ url_for('predict')}}" method="post">
+        <table>
+          <tr>
+            <td>
+              <input
+                type="text"
+                name="Online Order"
+                placeholder="Order Online"
+                required="required"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                type="text"
+                name="Book Table"
+                placeholder="Book Table"
+                required="required"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                type="text"
+                name="Votes"
+                placeholder="Votes"
+                required="required"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                type="text"
+                name="Location"
+                placeholder="Location"
+                required="required"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                type="text"
+                name="Restaurant Type"
+                placeholder="Restaurant Type"
+                required="required"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                type="text"
+                name="Cuisines"
+                placeholder="Cuisines"
+                required="required"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                type="text"
+                name="Cost"
+                placeholder="Cost"
+                required="required"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                type="text"
+                name="Menu Item"
+                placeholder="Menu Item"
+                required="required"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button type="submit" class="btn btn-primary btn-block btn-large">
+                Predict
+              </button>
+            </td>
+          </tr>
+        </table>
+      </form>
+
+      <br />
+      <br />
+      <style>
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+
+        .prediction-text {
+          color: white;
+          font-weight: bold;
+          margin-left: 130px;
+          font-size: xx-large;
+        }
+      </style>
+
+      <div class="prediction-text">{{ prediction_text }}</div>
+    </div>
+  </body>
+</html>
