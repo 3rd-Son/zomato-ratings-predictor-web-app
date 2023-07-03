@@ -1,5 +1,9 @@
 # Zomato Restaurant Rating Prediction
 
+![Image](zomato.jpg)
+
+---
+
 This project focuses on predicting the ratings of restaurants listed on Zomato based on various features. The project includes extensive exploratory data analysis (EDA), building a machine learning model using ExtraTree Regressor, and deploying the model using Flask to create a web application for live predictions of restaurant ratings.
 
 ## Dataset
